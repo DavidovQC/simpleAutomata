@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
-    stroke: 10px black;
+   
     margin-top: 40px;
 }
 
@@ -21,8 +21,15 @@ body{
     flex-direction: column;
 }
 
-#play-button{
+.button-board{
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
     margin-top: 20px;
+    height: 30px;
+    width: 70px;
 }
 
 .cell{
