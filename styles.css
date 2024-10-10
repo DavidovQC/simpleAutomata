@@ -1,6 +1,7 @@
 body{
     background-color: rgb(42, 49, 51);
     display: flex;
+    justify-content: center;
 }
 
 .game-board{
@@ -12,6 +13,16 @@ body{
     flex-wrap: wrap;
     border: 2px solid black;
     stroke: 10px black;
+    margin-top: 40px;
+}
+
+.display-board{
+    display: flex;
+    flex-direction: column;
+}
+
+#play-button{
+    margin-top: 20px;
 }
 
 .cell{
@@ -25,5 +36,5 @@ body{
 }
 
 .live{
-    background-color: rgb(20, 27, 28)
+    background-color: rgb(52, 87, 93)
 }
