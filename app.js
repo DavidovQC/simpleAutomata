@@ -88,21 +88,24 @@ function numberOfNeighborsAt(r, c){
     
     if(r+1 < dim){
         for(let i =-1; i < 2; i++){
-            if(gameData[r][c+i] == 1){
+            if(gameData[r+1][c+i] == 1){
                 count++;
             }
         }
     }
 
-    for(let i = -1; i <2; i++){
-        if(gameData[r][c+i] == 1){
-            count++;
-        }
+    
+    if(gameData[r][c+1] == 1){
+        count++;
+    }
+
+    if(gameData[r][c-1] == 1){
+        count++
     }
 
     if(-1<r-1){
         for(let i=-1; i< 2; i++){
-            if(gameData[r][c+i] == 1){
+            if(gameData[r-1][c+i] == 1){
                 count++;
             }
         }
@@ -183,6 +186,8 @@ nextButton.addEventListener('click', renderNextFrame);
 
 function renderNextFrame(){
     const neighborBoard = generateNeighborBoard();
+    console.log("neighbor board:")
+    console.log(neighborBoard);
     const nextFrame = generateNextFrame(neighborBoard);
     setNewDataBoard(nextFrame);
     updateGameBoard();
