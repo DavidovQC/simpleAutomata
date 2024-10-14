@@ -2,7 +2,8 @@ const gameBoard = document.querySelector('.game-board');
 const gameData = [];
 //game board is dim x dim 
 const res = 400;
-const dim = 5;
+const dim = 20;
+const time = 250;
 
 for(let i = 0; i < dim; i++){
     //set up ith row to be empty
@@ -27,10 +28,18 @@ for(let i = 0; i < dim; i++){
 }
 //get all cells
 const cells = document.querySelectorAll('.cell');
+
 //add an event listener to each cell so that they change state
-cells.forEach((square) => square.addEventListener('click', switchState));
+cells.forEach((square) => {
+    square.addEventListener('click', switchState)
+    //set height and width of all cells.
+    square.style.width = String(res/dim) + "px";
+    square.style.height = String(res/dim) + "px";
+
+});
 //switch state function, turns live cells dead, dead cells live,
 //updates the gameData matrix
+
 function switchState(e){
     const clickedCell = e.target;
     const isLive = e.target.classList.contains('live');
@@ -52,6 +61,7 @@ function switchState(e){
         console.log(gameData);
     }
 }
+
 
 function numberOfNeighborsAt(r, c){
     let count = 0;
@@ -176,7 +186,7 @@ pauseButton.addEventListener('click', pause);
 function play() {
     if (!paused) return; // If already playing, do nothing
     paused = false;
-    intervalId = setInterval(renderNextFrame, 1000); // 1000ms delay (1 second per frame)
+    intervalId = setInterval(renderNextFrame, time); // 1000ms delay (1 second per frame)
 }
 
 function pause() {
