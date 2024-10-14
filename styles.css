@@ -12,7 +12,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
-   
+    justify-content: center;
     margin-top: 40px;
 }
 

@@ -1,6 +1,7 @@
 const gameBoard = document.querySelector('.game-board');
 const gameData = [];
 //game board is dim x dim 
+const res = 400;
 const dim = 5;
 
 for(let i = 0; i < dim; i++){
@@ -51,37 +52,6 @@ function switchState(e){
         console.log(gameData);
     }
 }
-//returns number of neighbors of a given cell
-// function numberOfNeighbors(cell){
-//     let r = Number(cell.getAttribute('row'));
-//     let c = Number(cell.getAttribute('col'));
-
-//     let count = 0;
-    
-//     if(r+1 < dim){
-//         for(let i =-1; i < 2; i++){
-//             if(gameData[r][c+i] == 1){
-//                 count++;
-//             }
-//         }
-//     }
-
-//     for(let i = -1; i <2; i++){
-//         if(gameData[r][c+i] == 1){
-//             count++;
-//         }
-//     }
-
-//     if(-1<r-1){
-//         for(let i=-1; i< 2; i++){
-//             if(gameData[r][c+i] == 1){
-//                 count++;
-//             }
-//         }
-//     }
-
-//     return count;
-// }
 
 function numberOfNeighborsAt(r, c){
     let count = 0;
@@ -186,10 +156,45 @@ nextButton.addEventListener('click', renderNextFrame);
 
 function renderNextFrame(){
     const neighborBoard = generateNeighborBoard();
-    console.log("neighbor board:")
-    console.log(neighborBoard);
+    // console.log("neighbor board:")
+    // console.log(neighborBoard);
     const nextFrame = generateNextFrame(neighborBoard);
     setNewDataBoard(nextFrame);
+    console.log("game data:")
+    console.log(gameData);
     updateGameBoard();
 }
 
+const playButton = document.getElementById('play-button');
+playButton.addEventListener('click', play);
+let paused = true;
+
+const pauseButton = document.getElementById('pause-button');
+pauseButton.addEventListener('click', pause);
+
+
+function play() {
+    if (!paused) return; // If already playing, do nothing
+    paused = false;
+    intervalId = setInterval(renderNextFrame, 1000); // 1000ms delay (1 second per frame)
+}
+
+function pause() {
+    paused = true;
+    clearInterval(intervalId); // Stop the interval loop
+    console.log('paused');
+}
+
+// function play(){
+//     paused = false
+//     renderNextFrame();
+//     paused = false;
+//     while(!paused){
+//         setTimeout(renderNextFrame, 10000);
+//     }
+// }
+
+// function pause(){
+//     paused = true;
+//     console.log('paused');
+// }
