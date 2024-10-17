@@ -1,9 +1,11 @@
 const gameBoard = document.querySelector('.game-board');
 const gameData = [];
 //game board is dim x dim 
-const res = 400;
-const dim = 20;
-const time = 250;
+const res = 400; // number of pixels
+const dim = 20; //board is dim x dim
+const time = 100; //time in ms 
+
+//initalization
 
 for(let i = 0; i < dim; i++){
     //set up ith row to be empty
@@ -195,16 +197,4 @@ function pause() {
     console.log('paused');
 }
 
-// function play(){
-//     paused = false
-//     renderNextFrame();
-//     paused = false;
-//     while(!paused){
-//         setTimeout(renderNextFrame, 10000);
-//     }
-// }
 
-// function pause(){
-//     paused = true;
-//     console.log('paused');
-// }
